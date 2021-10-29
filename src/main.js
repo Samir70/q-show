@@ -1,8 +1,4 @@
-// import { createApp } from 'vue'
-import HelloWorld from './components/HelloWorld.vue';
-
-// createApp(App).mount('#app')
-
+import MultipleChoiceQ from './components/multipleChoiceQ.vue'
 export {
-    HelloWorld
+    MultipleChoiceQ
 }
