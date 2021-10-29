@@ -14,8 +14,15 @@ import { dummyQs } from './assets/dummyQs';
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+body {
+  background: #cff;
+  display: grid;
+  place-items: center;
+  width: 95%;
+  height: 100%;
+  margin: 0px;
+  padding: 5px;
+  color: black;
 }
 </style>

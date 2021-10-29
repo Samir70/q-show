@@ -54,7 +54,7 @@ const updateUserAnswer = (a) => {
  */
 
 <template>
-    <div>
+    <div id="q-space">
         <p>{{ qText }}</p>
         <div id="mcq-option-list">
             <div
@@ -67,3 +67,38 @@ const updateUserAnswer = (a) => {
         <button v-on:click="checkAnswer; $emit('user-answered', checkAnswer())">Check Answer</button>
     </div>
 </template>
+
+<style>
+#q-space {
+    background: #CFF;
+    border: 2px solid #6FF;
+    border-radius: 5%;
+    text-align: center;
+    height: 100vh;
+    width: 90vw;
+    max-width: 480px;
+}
+#mcq-option-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.mcq-option {
+    flex: 1 1 150px;
+    margin: 5px;
+    padding: 5px;
+    font-size: large;
+    border-radius: 5%;
+    background: white;
+}
+.selected {
+    background: goldenrod;
+}
+.solved {
+    background: greenyellow;
+}
+
+.mcq-option:hover {
+    background: coral;
+}
+</style>
