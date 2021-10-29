@@ -1,0 +1,17 @@
+{
+  "name": "q-show",
+  "version": "0.0.0",
+  "description": "Vue components to show various types of questions",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.16"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.9.3",
+    "vite": "^2.6.4"
+  }
+}
