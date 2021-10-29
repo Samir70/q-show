@@ -6,7 +6,6 @@ import { dummyQs } from './assets/dummyQs';
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
   <MultipleChoiceQ v-bind:qData="dummyQs[1]" />
 </template>
 

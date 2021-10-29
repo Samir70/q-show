@@ -35,12 +35,13 @@ const checkAnswer = () => {
         blandFB = 'Shame! Maybe Next time!';
     }
     let extra = (props.qData.feedback || blandFB)
+    console.log({ status: userWasCorrect.value, mark, extra })
     return { status: userWasCorrect.value, mark, extra }
 }
 const updateUserAnswer = (a) => {
     console.log('received new answer:', a)
     userAnswer.value = a;
-    for (let i of this.options) {
+    for (let i of options.value) {
         i.class = i.text === a ? 'mcq-option selected' : 'mcq-option'
     }
 }
