@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Vue components to show various types of questions",
   "files": [
-    "dist"
+    "/dist"
   ],
   "main": "./dist/q-show.umd.js",
   "module": "./dist/q-show.es.js",
