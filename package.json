@@ -13,6 +13,16 @@
       "require": "./dist/q-show.umd.js"
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Samir70/q-show"
+  },
+  "bugs": {
+    "url": "https://github.com/Samir70/q-show/issues"
+  },
+  "author": "Samir70",
+  "license": "MIT",
+  "keywords": ["quiz", "question", "mutliple choice"],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
