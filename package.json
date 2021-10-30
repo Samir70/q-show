@@ -1,6 +1,6 @@
 {
   "name": "q-show",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Vue components to show various types of questions",
   "files": [
     "/dist"
@@ -22,7 +22,11 @@
   },
   "author": "Samir70",
   "license": "MIT",
-  "keywords": ["quiz", "question", "mutliple choice"],
+  "keywords": [
+    "quiz",
+    "question",
+    "mutliple choice"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
