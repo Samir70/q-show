@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from '@vue/reactivity';
 import { ref } from 'vue';
+import { shuffleFY } from '../assets/shuffleFY';
 const props = defineProps({
     qData: Object
 })
@@ -8,15 +9,6 @@ const emits = defineEmits(['user-answered'])
 const qText = computed(() => props.qData.question)
 const userWasCorrect = ref(false);
 const waitForAns = ref(true);
-// Fisher-Yates shuffle algorithm
-const shuffleFY = arr => {
-    let out = [...arr];
-    for (let i = out.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1)); // number 0..i
-        [out[i], out[j]] = [out[j], out[i]]
-    }
-    return out
-}
 const options = ref(
     shuffleFY([props.qData.answer, ...props.qData.wrongOptions]).map((x, i) => {
         return { text: x, id: i, class: 'mcq-option selectable' }
