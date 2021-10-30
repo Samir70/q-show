@@ -69,7 +69,7 @@ const updateUserAnswer = (a) => {
     </div>
 </template>
 
-<style>
+<style scoped>
 #q-space {
     background: #CFF;
     border: 2px solid #6FF;
@@ -95,10 +95,6 @@ const updateUserAnswer = (a) => {
 .selected {
     background: goldenrod;
 }
-.solved {
-    background: greenyellow;
-}
-
 .mcq-option:hover {
     background: coral;
 }
