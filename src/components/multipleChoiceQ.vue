@@ -4,6 +4,7 @@ import { ref } from 'vue';
 const props = defineProps({
     qData: Object
 })
+const emits = defineEmits(['user-answered'])
 const qText = computed(() => props.qData.question)
 const userWasCorrect = ref(false);
 const userAnswer = ref('');
