@@ -7,7 +7,7 @@ const props = defineProps({
 const emits = defineEmits(['user-answered'])
 const qText = computed(() => props.qData.question)
 const userWasCorrect = ref(false);
-const userAnswer = ref('');
+const waitForAns = ref(true);
 // Fisher-Yates shuffle algorithm
 const shuffleFY = arr => {
     let out = [...arr];
@@ -19,31 +19,21 @@ const shuffleFY = arr => {
 }
 const options = ref(
     shuffleFY([props.qData.answer, ...props.qData.wrongOptions]).map((x, i) => {
-        return { text: x, id: i, class: 'mcq-option' }
+        return { text: x, id: i, class: 'mcq-option selectable' }
     })
 );
 
-const checkAnswer = () => {
-    let mark = '';
-    let blandFB = 'You had a go!';
-    if (props.qData.answer === userAnswer.value) {
-        userWasCorrect.value = true;
-        mark = 'Correct! '
-        blandFB = 'Wow! Way to go!!!';
-    } else {
-        userWasCorrect.value = false;
-        mark = 'Wrong! '
-        blandFB = 'Shame! Maybe Next time!';
-    }
-    let extra = (props.qData.feedback || blandFB)
-    console.log({ status: userWasCorrect.value, mark, extra })
-    return { status: userWasCorrect.value, mark, extra }
+const nextQ = () => {
+    return { userWasCorrect: userWasCorrect.value }
 }
-const updateUserAnswer = (a) => {
-    console.log('received new answer:', a)
-    userAnswer.value = a;
+const updateUserAnswer = (userAns) => {
+    if (!waitForAns.value) {return}
+    console.log('received new answer:', userAns)
+    userWasCorrect.value = props.qData.answer === userAns
+    waitForAns.value = false;
     for (let i of options.value) {
-        i.class = i.text === a ? 'mcq-option selected' : 'mcq-option'
+        i.class = i.text === props.qData.answer ? 'mcq-option correct' 
+            : i.text === userAns ? 'mcq-option wrong' : 'mcq-option disable'
     }
 }
 </script>
@@ -65,17 +55,20 @@ const updateUserAnswer = (a) => {
                 v-on:click="updateUserAnswer(item.text)"
             >{{ item.text }}</div>
         </div>
-        <button v-on:click="checkAnswer; $emit('user-answered', checkAnswer())">Check Answer</button>
+        <div v-if="!waitForAns">
+            <p>{{props.qData.feedback || (userWasCorrect ? 'Correct!' : 'Wrong!')}}</p>
+            <button v-on:click="$emit('user-answered', nextQ())">Next Q</button>
+        </div>
     </div>
 </template>
 
 <style scoped>
 #q-space {
-    background: #CFF;
-    border: 2px solid #6FF;
+    background: #cff;
+    border: 2px solid #6ff;
     border-radius: 5%;
     text-align: center;
-    height: 100vh;
+    /* height: 100vh; */
     width: 90vw;
     max-width: 480px;
 }
@@ -92,10 +85,17 @@ const updateUserAnswer = (a) => {
     border-radius: 5%;
     background: white;
 }
-.selected {
-    background: goldenrod;
+.correct {
+    background: green;
 }
-.mcq-option:hover {
+.wrong {
+    background: rgb(245, 54, 54);
+}
+.disable {
+    background-color: salmon;
+    opacity: 0.5;
+}
+.selectable:hover {
     background: coral;
 }
 </style>

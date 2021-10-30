@@ -3,26 +3,24 @@ import MultipleChoiceQ from './components/multipleChoiceQ.vue';
 import { dummyQs } from './assets/dummyQs';
 // import { computed } from '@vue/reactivity';
 import { ref } from '@vue/reactivity';
-const currentQ = ref(dummyQs[1]);
-const showQ = ref(true);
-const userAns = ref({})
+const currentQ = ref(0);
 const respondToAns = (ans) => {
   console.log('Need to respond to answer:',ans);
-  showQ.value = false
-  userAns.value = ans
+  currentQ.value = (currentQ.value + 1) % 2
 }
 const nextQ = () => {
-  currentQ.value = dummyQs[1]
-  showQ.value = true
+  currentQ.value = (currentQ.value + 1) % 2
+}
+const qTypes = {
+  multiChoice: MultipleChoiceQ
 }
 </script>
 
 <template>
-  <MultipleChoiceQ v-if="showQ" v-bind:qData="currentQ" v-on:user-answered="respondToAns" />
-  <div v-else >
-    <p>You answered the question! And I knew about it! Yay!!!</p>
-    <p>You were {{userAns.status ? 'correct' : 'wrong'}}!</p>
-    <p>{{userAns.extra}}</p>
+  <component v-bind:is="qTypes[dummyQs[currentQ].qType]" v-bind:qData="dummyQs[currentQ]" v-on:user-answered="respondToAns"  />
+  <!-- <MultipleChoiceQ v-if="dummyQs[currentQ].qType === 'multiChoice'" v-bind:qData="dummyQs[currentQ]" v-on:user-answered="respondToAns" /> -->
+  <div>
+    <p>I don't know how to display questions of type: {{dummyQs[currentQ].qType}}</p>
     <button v-on:click="nextQ">Next Q</button>
   </div>
 </template>
