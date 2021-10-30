@@ -36,11 +36,13 @@ The component needs a qData prop. Bind that to an object. DummyQs is a good sour
 ```
 And the 'html' for the page will look like:
 ```
-<MultipleChoiceQ v-if="showQ" v-bind:qData="currentQ" v-on:user-answered="respondToAns" />
+<MultipleChoiceQ v-bind:qData="currentQ" v-on:user-answered="respondToAns" />
 ```
-As you can see, the component will handle getting an answer from the user and emit an action passing an object to the method 'respondToAns' which you have to write yourself! (So you can change the name, if you prefer!). The object passed will look like:
+As you can see, the component will handle getting an answer from the user and emit an action passing an object to the method 'respondToAns' which you have to write yourself! (So you can change the name, if you prefer!). You can see my example in this repo for how I handled user answers. It's in src/App.vue
+
+The object passed to this method will look like:
 
 ```
 { status: true, mark: "Correct! ", extra: "The longest chord of a circle is called the diameter." }
 ```
-These keys need changing! They do not describe the data being passeed. I don't know what I was thinking. So: watch this space for potentially breaking changes when this is made better.
+These keys need changing! They do not describe the data being passed. I don't know what I was thinking. So: watch this space for potentially breaking changes when this is made better.
