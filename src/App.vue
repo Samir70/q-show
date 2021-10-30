@@ -1,5 +1,6 @@
 <script setup>
 import MultipleChoiceQ from './components/multipleChoiceQ.vue';
+import ShortAnswer from './components/ShortAnswer.vue';
 import { dummyQs } from './assets/dummyQs';
 // import { computed } from '@vue/reactivity';
 import { ref } from '@vue/reactivity';
@@ -12,7 +13,8 @@ const nextQ = () => {
   currentQ.value = (currentQ.value + 1) % 2
 }
 const qTypes = {
-  multiChoice: MultipleChoiceQ
+  multiChoice: MultipleChoiceQ,
+  shortAnswer: ShortAnswer
 }
 </script>
 
@@ -20,7 +22,7 @@ const qTypes = {
   <component v-bind:is="qTypes[dummyQs[currentQ].qType]" v-bind:qData="dummyQs[currentQ]" v-on:user-answered="respondToAns"  />
   <!-- <MultipleChoiceQ v-if="dummyQs[currentQ].qType === 'multiChoice'" v-bind:qData="dummyQs[currentQ]" v-on:user-answered="respondToAns" /> -->
   <div>
-    <p>I don't know how to display questions of type: {{dummyQs[currentQ].qType}}</p>
+    <p>Current qType: {{dummyQs[currentQ].qType}}</p>
     <button v-on:click="nextQ">Next Q</button>
   </div>
 </template>
