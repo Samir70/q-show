@@ -68,6 +68,7 @@ const nextQ = () => {
 <template>
     <div id="q-space">
         <p>{{ qText }}</p>
+        <p>Click a card to turn it over</p>
         <div id="mcq-option-list">
             <div
                 v-for="tile in cards.tiles"

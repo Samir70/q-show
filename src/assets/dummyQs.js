@@ -7,7 +7,7 @@ export const dummyQs = [
   },
   { qType: 'shortAnswer', question: 'What is 2+1?', answer: 3 },
   {
-    qType: 'match', question: 'Match the following:',
+    qType: 'match', question: 'Match the following countries to their captials.',
     pairs: [['London', 'England'], ['Paris', 'France'], ['Brussels', 'Belgium'], ['Athens', 'Greece']]
   },
   {
