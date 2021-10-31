@@ -2,11 +2,11 @@
 
 This is intended as an npm package so that I can re-use the components which display questions. If you take a look at [qShow](https://github.com/Samir70/qShow) (no hyphen) you can see the components I wrote some time ago. They weren't SFCs, with a .vue extension. Much harder to re-use in a different project. So: I am doing it properly now! 
 
-If you clone this repo, you can run my development version where I test the components.
+If you clone the github repo, you can run my development version where I test the components.
 
 > npm run dev
 
-Then go to localhost:3000/ to see the page. Currently: only the multiple choice component and dummy questions are included.
+Then go to localhost:3000/ to see the page. 
 
 ## installing the npm package
 
@@ -21,8 +21,9 @@ import { MatchQ, MultipleChoiceQ, ShortAnswerQ, dummyQs } from 'q-show'
 
 // in style
 @import '../node_modules/q-show/dist/style.css'
-// or you can make your own stylesheet, maybe take a look at the source in this repo to see what needs to be accounted for
+// or you can make your own stylesheet, maybe take a look at the source in the github repo to see what needs to be accounted for
 // I don't recommend it, since the styles used are scoped to each component and there is some re-using of ids
+// If there is demand, I can change the ids to make them unique
 ```
 
 ## using the MultipleChoiceQ component
@@ -39,7 +40,7 @@ And the 'html' for the page will look like:
 ```
 <MultipleChoiceQ v-bind:qData="currentQ" v-on:user-answered="respondToAns" />
 ```
-As you can see, the component will handle getting an answer from the user and emit an action passing an object to the method 'respondToAns' which you have to write yourself! (So you can change the name, if you prefer!). You can see my example in this repo for how I handled user answers. It's in src/App.vue
+As you can see, the component will handle getting an answer from the user and emit an action passing an object to the method 'respondToAns' which you have to write yourself! (So you can change the name, if you prefer!). You can see my example in the github repo for how I handled user answers. It's in src/App.vue
 
 The object passed to this method will look like:
 
@@ -49,3 +50,19 @@ The object passed to this method will look like:
 This lets you react to whether the user was right or wrong by, eg: updating a score. 
 
 You can handle anything else to do with the question (like hints or feedback) outside of the q-show component
+
+## Dynamic Components
+Again: this is demonstrated in App.vue in the github repo. I set up an object with the possible qTypes as keys and the components as values:
+```
+const qTypes = {
+  match: MatchQ,
+  multiChoice: MultipleChoiceQ,
+  shortAnswer: ShortAnswer
+}
+```
+Then I can use Vue's component element and bind the "is" property. 
+
+Remembering that your question is an object with a qType property (see above), this can be coded as:
+```
+<component v-bind:is="qTypes[currentQ.qType]" v-bind:qData="currentQ" v-on:user-answered="respondToAns"  />
+```
