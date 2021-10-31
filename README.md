@@ -16,12 +16,13 @@ Then in, say, app.vue you need to include
 
 ```
 // in setup:
-import { MultipleChoiceQ, dummyQs } from 'q-show'
+import { MatchQ, MultipleChoiceQ, ShortAnswerQ, dummyQs } from 'q-show'
 // those are the only things available at the moment
 
 // in style
 @import '../node_modules/q-show/dist/style.css'
 // or you can make your own stylesheet, maybe take a look at the source in this repo to see what needs to be accounted for
+// I don't recommend it, since the styles used are scoped to each component and there is some re-using of ids
 ```
 
 ## using the MultipleChoiceQ component
@@ -31,7 +32,7 @@ The component needs a qData prop. Bind that to an object. DummyQs is a good sour
 {
     qType: 'multiChoice', question: 'What do you call the longest chord in a circle?',
     answer: 'diameter', wrongOptions: ['radius', 'tangent', 'line'],
-    feedback: 'The longest chord of a circle is called the diameter.'
+    // optional feedback: 'The longest chord of a circle is called the diameter.'
 }
 ```
 And the 'html' for the page will look like:
@@ -43,6 +44,8 @@ As you can see, the component will handle getting an answer from the user and em
 The object passed to this method will look like:
 
 ```
-{ status: true, mark: "Correct! ", extra: "The longest chord of a circle is called the diameter." }
+{ userWasCorrect: true }
 ```
-These keys need changing! They do not describe the data being passed. I don't know what I was thinking. So: watch this space for potentially breaking changes when this is made better.
+This lets you react to whether the user was right or wrong by, eg: updating a score. 
+
+You can handle anything else to do with the question (like hints or feedback) outside of the q-show component
