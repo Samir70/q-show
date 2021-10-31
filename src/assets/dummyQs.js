@@ -2,9 +2,10 @@ export const dummyQs = [
   {
     qType: 'multiChoice', question: 'What do you call the longest chord in a circle?',
     answer: 'diameter', wrongOptions: ['radius', 'tangent', 'line'],
-    feedback: 'The longest chord of a circle is called the diameter.'
+    // feedback is optional
+    feedback: 'The longest chord of a circle is called the diameter.' 
   },
-  { qType: 'shortAnswer', question: 'What is 2+1?', answer: 3, feedback: '2+1 = 3' },
+  { qType: 'shortAnswer', question: 'What is 2+1?', answer: 3 },
   {
     qType: 'match', question: 'Match the following:',
     pairs: [['London', 'England'], ['Paris', 'France'], ['Brussels', 'Belgium'], ['Athens', 'Greece']]
