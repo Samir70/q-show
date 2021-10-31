@@ -25,7 +25,9 @@
   "keywords": [
     "quiz",
     "question",
-    "mutliple choice"
+    "mutliple choice",
+    "short answer",
+    "pelmanism"
   ],
   "scripts": {
     "dev": "vite",
