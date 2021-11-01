@@ -64,6 +64,8 @@ const nextQ = () => {
             >{{ cards[item].text }}</div>
         </div>
         <button v-if="userAns.length === ordered.length && !ansChecked" v-on:click="checkAns">Check Answer</button>
+        <p v-if="ansChecked">You {{userWasCorrect ? 'successfully' : 'failed to'}} put in the correct order</p>
+        <p v-if="ansChecked && !userWasCorrect">Correct order: {{ordered.join(', ')}}</p>
         <button v-if="ansChecked" v-on:click="$emit('user-answered', nextQ())">Next Q</button>
     </div>
 </template>

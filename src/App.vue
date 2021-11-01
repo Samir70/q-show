@@ -8,7 +8,7 @@ import { dummyQs } from './assets/dummyQs';
 import { ref } from '@vue/reactivity';
 const currentQ = ref(3);
 const respondToAns = (ans) => {
-  console.log('Need to respond to answer:',ans);
+  console.log('Need to respond to answer:', ans);
   currentQ.value = (currentQ.value + 1) % 5
 }
 const nextQ = () => {
@@ -23,10 +23,15 @@ const qTypes = {
 </script>
 
 <template>
-  <component v-bind:is="qTypes[dummyQs[currentQ].qType]" v-bind:qData="dummyQs[currentQ]" v-on:user-answered="respondToAns"  />
+  <component
+    v-bind:is="qTypes[dummyQs[currentQ].qType]"
+    v-bind:qData="dummyQs[currentQ]"
+    v-on:user-answered="respondToAns"
+    v-bind:key="currentQ"
+  />
   <!-- <MultipleChoiceQ v-if="dummyQs[currentQ].qType === 'multiChoice'" v-bind:qData="dummyQs[currentQ]" v-on:user-answered="respondToAns" /> -->
   <div>
-    <p>Current qType: {{dummyQs[currentQ].qType}}</p>
+    <p>Current qType: {{ dummyQs[currentQ].qType }}</p>
     <button v-on:click="nextQ">Next Q</button>
   </div>
 </template>
