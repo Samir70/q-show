@@ -2,21 +2,23 @@
 import MatchQ from './components/MatchQ.vue';
 import MultipleChoiceQ from './components/multipleChoiceQ.vue';
 import ShortAnswer from './components/ShortAnswer.vue';
+import SortQ from './components/SortQ.vue';
 import { dummyQs } from './assets/dummyQs';
 // import { computed } from '@vue/reactivity';
 import { ref } from '@vue/reactivity';
-const currentQ = ref(0);
+const currentQ = ref(3);
 const respondToAns = (ans) => {
   console.log('Need to respond to answer:',ans);
-  currentQ.value = (currentQ.value + 1) % 3
+  currentQ.value = (currentQ.value + 1) % 5
 }
 const nextQ = () => {
-  currentQ.value = (currentQ.value + 1) % 3
+  currentQ.value = (currentQ.value + 1) % 5
 }
 const qTypes = {
   match: MatchQ,
   multiChoice: MultipleChoiceQ,
-  shortAnswer: ShortAnswer
+  shortAnswer: ShortAnswer,
+  sort: SortQ
 }
 </script>
 
