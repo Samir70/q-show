@@ -19,8 +19,8 @@ export const dummyQs = [
     answer: [-9, -4, -1, 3, 6], giveHint: true
   },
   {
-    qType: 'classify', question: 'Decide where each of these belongs',
-    buckets: ['Primes', 'Composite'], items: [[2, 5, 3, 7, 11], [1, 4, 9, 15]]
+    qType: 'classify', 
+    buckets: ['Prime', 'Composite', 'Neither'], items: [[2, 5, 3, 7, 11], [4, 9, 15], [1]]
   },
   {
     qType: 'elimination', qList: ['What is 3 x 5?', 'What is 30 - 2?', 'What is 24/4 ?'],

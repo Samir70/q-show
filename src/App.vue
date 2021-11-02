@@ -1,4 +1,5 @@
 <script setup>
+import ClassifyQ from './components/ClassifyQ.vue';
 import MatchQ from './components/MatchQ.vue';
 import MultipleChoiceQ from './components/multipleChoiceQ.vue';
 import ShortAnswer from './components/ShortAnswer.vue';
@@ -6,15 +7,16 @@ import SortQ from './components/SortQ.vue';
 import { dummyQs } from './assets/dummyQs';
 // import { computed } from '@vue/reactivity';
 import { ref } from '@vue/reactivity';
-const currentQ = ref(3);
+const currentQ = ref(5);
 const respondToAns = (ans) => {
   console.log('Need to respond to answer:', ans);
-  currentQ.value = (currentQ.value + 1) % 5
+  currentQ.value = (currentQ.value + 1) % 6
 }
 const nextQ = () => {
-  currentQ.value = (currentQ.value + 1) % 5
+  currentQ.value = (currentQ.value + 1) % 6
 }
 const qTypes = {
+  classify: ClassifyQ,
   match: MatchQ,
   multiChoice: MultipleChoiceQ,
   shortAnswer: ShortAnswer,
