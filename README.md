@@ -25,6 +25,7 @@ import { MatchQ, MultipleChoiceQ, ShortAnswerQ, dummyQs } from 'q-show'
 // I don't recommend it, since the styles used are scoped to each component and there is some re-using of ids
 // If there is demand, I can change the ids to make them unique
 ```
+Of course: you could just copy and paste the SFC from the github repo. Then you could adapt the component to your own needs. But if you have ideas for how to display questions, why not open an issue here? Then this repo could grow and improve with other people's ideas.
 
 ## using the MultipleChoiceQ component
 
