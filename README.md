@@ -28,14 +28,14 @@ import { MatchQ, MultipleChoiceQ, ShortAnswerQ, dummyQs } from 'q-show'
 
 ## using the MultipleChoiceQ component
 
-The component needs a qData prop. Bind that to an object. DummyQs is a good source for the format of these objects. 
+The component needs a qData prop. Bind that to an object. DummyQs is a good source for the format of these objects. In version 2.0.0, the question and answer properties of many types of questions were changed to just use q and a. This matches my other project: [math-q-factory](https://github.com/Samir70/math-q-factory), which currently makes shortAnswer questions but is due for an upgrade!
 ```
 {
-    qType: 'multiChoice', question: 'What do you call the longest chord in a circle?',
-    answer: 'diameter', wrongOptions: ['radius', 'tangent', 'line'],
-    // optional feedback: 'The longest chord of a circle is called the diameter.'
-}
-```
+    qType: 'multiChoice', q: 'What do you call the longest chord in a circle?',
+    a: 'diameter', wrongOptions: ['radius', 'tangent', 'line'],
+    // feedback is optional
+    feedback: 'The longest chord of a circle is called the diameter.' 
+  }```
 And the 'html' for the page will look like:
 ```
 <MultipleChoiceQ v-bind:qData="currentQ" v-on:user-answered="respondToAns" />
@@ -55,11 +55,12 @@ You can handle anything else to do with the question (like hints or feedback) ou
 Again: this is demonstrated in App.vue in the github repo. I set up an object with the possible qTypes as keys and the components as values:
 ```
 const qTypes = {
+  classify: ClassifyQ,
   match: MatchQ,
   multiChoice: MultipleChoiceQ,
-  shortAnswer: ShortAnswer
-}
-```
+  shortAnswer: ShortAnswer,
+  sort: SortQ
+}```
 Then I can use Vue's component element and bind the "is" property. 
 
 Remembering that your question is an object with a qType property (see above), this can be coded as:
