@@ -16,7 +16,7 @@ Then in, say, app.vue you need to include
 
 ```
 // in setup:
-import { MatchQ, MultipleChoiceQ, ShortAnswerQ, dummyQs } from 'q-show'
+import { ClassifyQ, MatchQ, MultipleChoiceQ, ShortAnswerQ, SortQ, dummyQs } from 'q-show'
 // those are the only things available at the moment
 
 // in style
