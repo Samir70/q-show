@@ -6,7 +6,7 @@ const props = defineProps({
     qData: Object
 })
 const emits = defineEmits(['user-answered'])
-const qText = computed(() => props.qData.question)
+const qText = computed(() => props.qData.q)
 let options = {}, tiles = [], i = 1;
 for (let [left, right] of props.qData.pairs) {
     tiles.push(left, right)

@@ -13,7 +13,6 @@ for (let i = 0; i < props.qData.buckets.length; i++) {
     }
 }
 itemList = shuffleFY(itemList)
-console.log(itemList)
 let qNumber = ref(0)
 let currentItem = ref(itemList[0])
 const bucketsText = props.qData.buckets.slice(0, -1).join(', ') + ' or ' + props.qData.buckets.slice(-1)

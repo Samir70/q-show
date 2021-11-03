@@ -6,14 +6,14 @@ const props = defineProps({
     qData: Object
 })
 const emits = defineEmits(['user-answered'])
-const qText = computed(() => props.qData.question)
-const ordered = computed(() => [...props.qData.answer])
-const mixed = ref(shuffleFY(props.qData.answer))
+const qText = computed(() => props.qData.q)
+const ordered = computed(() => [...props.qData.a])
+const mixed = ref(shuffleFY(props.qData.a))
 const userAns = ref([])
 const ansChecked = ref(false)
 const userWasCorrect = ref(false)
 let options = {}, i = 1;
-for (let item of props.qData.answer) {
+for (let item of props.qData.a) {
     options[item] = { text: item, class: 'sort-option selectable', id: item + '-' + i };
     i++;
 }

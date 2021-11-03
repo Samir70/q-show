@@ -5,14 +5,14 @@ const props = defineProps({
     qData: Object
 })
 const emits = defineEmits(['user-answered'])
-const qText = computed(() => props.qData.question)
+const qText = computed(() => props.qData.q)
 const userAns = ref('');
 const userWasCorrect = ref(false);
 const waitForAns = ref(true);
 
 const checkAnswer = () => {
     waitForAns.value = false
-    userWasCorrect.value = userAns.value === ''+props.qData.answer
+    userWasCorrect.value = userAns.value === ''+props.qData.a
     return { userWasCorrect: userWasCorrect.value}
 }
 </script>

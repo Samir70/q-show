@@ -6,11 +6,11 @@ const props = defineProps({
     qData: Object
 })
 const emits = defineEmits(['user-answered'])
-const qText = computed(() => props.qData.question)
+const qText = computed(() => props.qData.q)
 const userWasCorrect = ref(false);
 const waitForAns = ref(true);
 const options = ref(
-    shuffleFY([props.qData.answer, ...props.qData.wrongOptions]).map((x, i) => {
+    shuffleFY([props.qData.a, ...props.qData.wrongOptions]).map((x, i) => {
         return { text: x, id: i, class: 'mcq-option selectable' }
     })
 );
@@ -21,10 +21,10 @@ const nextQ = () => {
 const updateUserAnswer = (userAns) => {
     if (!waitForAns.value) {return}
     console.log('received new answer:', userAns)
-    userWasCorrect.value = props.qData.answer === userAns
+    userWasCorrect.value = props.qData.a === userAns
     waitForAns.value = false;
     for (let i of options.value) {
-        i.class = i.text === props.qData.answer ? 'mcq-option correct' 
+        i.class = i.text === props.qData.a ? 'mcq-option correct' 
             : i.text === userAns ? 'mcq-option wrong' : 'mcq-option disable'
     }
 }

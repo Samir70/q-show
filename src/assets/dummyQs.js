@@ -1,22 +1,22 @@
 export const dummyQs = [
   {
-    qType: 'multiChoice', question: 'What do you call the longest chord in a circle?',
-    answer: 'diameter', wrongOptions: ['radius', 'tangent', 'line'],
+    qType: 'multiChoice', q: 'What do you call the longest chord in a circle?',
+    a: 'diameter', wrongOptions: ['radius', 'tangent', 'line'],
     // feedback is optional
     feedback: 'The longest chord of a circle is called the diameter.' 
   },
-  { qType: 'shortAnswer', question: 'What is 2+1?', answer: 3 },
+  { qType: 'shortAnswer', q: 'What is 2+1?', a: 3 },
   {
-    qType: 'match', question: 'Match the following countries to their captials.',
+    qType: 'match', q: 'Match the following countries to their captials.',
     pairs: [['London', 'England'], ['Paris', 'France'], ['Brussels', 'Belgium'], ['Athens', 'Greece']]
   },
   {
-    qType: 'sort', question: 'Sort these decimals into ascending order',
-    answer: [3.024, 3.1, 3.127, 3.14], giveHint: true
+    qType: 'sort', q: 'Sort these decimals into ascending order',
+    a: [3.024, 3.1, 3.127, 3.14], giveHint: true
   },
   {
-    qType: 'sort', question: 'Sort these numbers into ascending order',
-    answer: [-9, -4, -1, 3, 6], giveHint: true
+    qType: 'sort', q: 'Sort these numbers into ascending order',
+    a: [-9, -4, -1, 3, 6], giveHint: true
   },
   {
     qType: 'classify', 
@@ -30,6 +30,6 @@ export const dummyQs = [
 
 export const defaultQ = {
   qType: 'shortAnswer',
-  question: 'What is the answer to life, the universe and everything?',
-  answer: 42, feedback: 'Brain the size of a planet...!'
+  q: 'What is the answer to life, the universe and everything?',
+  a: 42, feedback: 'Brain the size of a planet...!'
 };
