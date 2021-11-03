@@ -1,6 +1,6 @@
 {
   "name": "q-show",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Vue components to show various types of questions",
   "files": [
     "/dist"
