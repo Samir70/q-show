@@ -15,9 +15,6 @@ const options = ref(
     })
 );
 
-const nextQ = () => {
-    return { userWasCorrect: userWasCorrect.value }
-}
 const updateUserAnswer = (userAns) => {
     if (!waitForAns.value) {return}
     console.log('received new answer:', userAns)
@@ -27,6 +24,9 @@ const updateUserAnswer = (userAns) => {
         i.class = i.text === props.qData.a ? 'mcq-option correct' 
             : i.text === userAns ? 'mcq-option wrong' : 'mcq-option disable'
     }
+    emits('user-answered', {
+        userWasCorrect: userWasCorrect.value 
+    })
 }
 </script>
 
@@ -49,7 +49,6 @@ const updateUserAnswer = (userAns) => {
         </div>
         <div v-if="!waitForAns">
             <p>{{props.qData.feedback || (userWasCorrect ? 'Correct!' : 'Wrong!')}}</p>
-            <button v-on:click="$emit('user-answered', nextQ())">Next Q</button>
         </div>
     </div>
 </template>
