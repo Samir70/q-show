@@ -57,12 +57,12 @@ const updateUserAnswer = (tile) => {
         }
         // firstTile.value = ''
     }
+    if (leftToAnswer.value === 0) {
+        emits('user-answered', {
+            userWasCorrect: true
+        })
+    }
 }
-
-const nextQ = () => {
-    return { userWasCorrect: true }
-}
-
 </script>
 
 <template>
@@ -78,7 +78,6 @@ const nextQ = () => {
             >{{ cards[tile].text }}</div>
         </div>
         <p v-if="feedback !== ''">{{ feedback }}</p>
-        <button v-if="leftToAnswer === 0" v-on:click="$emit('user-answered', nextQ())">Next Q</button>
     </div>
 </template>
 
