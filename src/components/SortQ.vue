@@ -19,7 +19,7 @@ for (let item of props.qData.a) {
 }
 const cards = ref(options)
 const selectCard = (item) => {
-    if (cards.value[item].class === "sort-option disable") {return} 
+    if (cards.value[item].class === "sort-option disable") { return }
     cards.value[item].class = "sort-option disable"
     userAns.value.push(item)
 }
@@ -38,9 +38,9 @@ const checkAns = () => {
         }
     }
     ansChecked.value = true
-}
-const nextQ = () => {
-    return { userWasCorrect: userWasCorrect.value }
+    emits('user-answered', {
+        userWasCorrect: userWasCorrect.value
+    })
 }
 </script>
 
@@ -63,10 +63,14 @@ const nextQ = () => {
                 v-on:click="selectCard(item)"
             >{{ cards[item].text }}</div>
         </div>
-        <button v-if="userAns.length === ordered.length && !ansChecked" v-on:click="checkAns">Check Answer</button>
-        <p v-if="ansChecked">You {{userWasCorrect ? 'successfully' : 'failed to'}} put in the correct order</p>
-        <p v-if="ansChecked && !userWasCorrect">Correct order: {{ordered.join(', ')}}</p>
-        <button v-if="ansChecked" v-on:click="$emit('user-answered', nextQ())">Next Q</button>
+        <button
+            v-if="userAns.length === ordered.length && !ansChecked"
+            v-on:click="checkAns"
+        >Check Answer</button>
+        <p
+            v-if="ansChecked"
+        >You {{ userWasCorrect ? 'successfully' : 'failed to' }} put in the correct order</p>
+        <p v-if="ansChecked && !userWasCorrect">Correct order: {{ ordered.join(', ') }}</p>
     </div>
 </template>
 
