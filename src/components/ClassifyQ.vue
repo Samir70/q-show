@@ -32,19 +32,17 @@ const checkAns = (ans) => {
         currentItem.value = itemList[qNumber.value]
     } else {
         answeredAll.value = true
-    }
-}
-const nextQ = () => {
-    return {
-        userWasCorrect: gotCorrect.value === itemList.length,
-        correct: gotCorrect.value, wrong: itemList.length - gotCorrect.value
+        emits('user-answered', {
+            userWasCorrect: gotCorrect.value === itemList.length,
+            correct: gotCorrect.value, wrong: itemList.length - gotCorrect.value
+        })
     }
 }
 </script>
 
 <template>
     <div id="q-space">
-        <h3 v-if="answeredAll">You got {{gotCorrect}} right out of {{itemList.length}}</h3>
+        <h3 v-if="answeredAll">You got {{ gotCorrect }} right out of {{ itemList.length }}</h3>
         <div v-if="!answeredAll">
             <h2>Is {{ currentItem.name }} {{ bucketsText }}</h2>
             <div id="bucket-list">
@@ -64,7 +62,6 @@ const nextQ = () => {
                 v-bind:class="fb.status"
             >{{ fb.text }}</div>
         </div>
-        <button v-if="answeredAll" v-on:click="$emit('user-answered', nextQ())">Next Q</button>
     </div>
 </template>
 
