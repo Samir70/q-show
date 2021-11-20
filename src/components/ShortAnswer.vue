@@ -12,8 +12,10 @@ const waitForAns = ref(true);
 
 const checkAnswer = () => {
     waitForAns.value = false
-    userWasCorrect.value = userAns.value === ''+props.qData.a
-    return { userWasCorrect: userWasCorrect.value}
+    userWasCorrect.value = userAns.value === '' + props.qData.a
+    emits('user-answered', {
+        userWasCorrect: userWasCorrect.value
+    })
 }
 </script>
 
@@ -25,8 +27,7 @@ const checkAnswer = () => {
             <button v-on:click="checkAnswer">Check Answer</button>
         </div>
         <div v-else>
-            <p>{{userAns}} is {{userWasCorrect ? 'Correct!' : 'Wrong!'}}</p>
-            <button v-on:click="$emit('user-answered', checkAnswer())">Next Q</button>
+            <p>{{ userAns }} is {{ userWasCorrect ? 'Correct!' : 'Wrong!' }}</p>
         </div>
     </div>
 </template>
