@@ -36,10 +36,11 @@ The component needs a qData prop. Bind that to an object. DummyQs is a good sour
     a: 'diameter', wrongOptions: ['radius', 'tangent', 'line'],
     // feedback is optional
     feedback: 'The longest chord of a circle is called the diameter.' 
-  }```
+}
+```
 And the 'html' for the page will look like:
 ```
-<MultipleChoiceQ v-bind:qData="currentQ" v-on:user-answered="respondToAns" />
+MultipleChoiceQ v-bind:qData="currentQ" v-on:user-answered="respondToAns" />
 ```
 As you can see, the component will handle getting an answer from the user and emit an action passing an object to the method 'respondToAns' which you have to write yourself! (So you can change the name, if you prefer!). You can see my example in the github repo for how I handled user answers. It's in src/App.vue
 
@@ -50,7 +51,9 @@ The object passed to this method will look like:
 ```
 This lets you react to whether the user was right or wrong by, eg: updating a score. 
 
-You can handle anything else to do with the question (like hints or feedback) outside of the q-show component
+You can handle anything else to do with the question (like hints or feedback) outside of the q-show component.
+
+In version 3, the q-show components emit a user-answered action when the user has finished answering. Version 2 emitted the action when the user asked for a new question. That request now needs to be handled by your own app.
 
 ## Dynamic Components
 Again: this is demonstrated in App.vue in the github repo. I set up an object with the possible qTypes as keys and the components as values:
@@ -66,5 +69,5 @@ Then I can use Vue's component element and bind the "is" property.
 
 Remembering that your question is an object with a qType property (see above), this can be coded as:
 ```
-<component v-bind:is="qTypes[currentQ.qType]" v-bind:qData="currentQ" v-on:user-answered="respondToAns"  />
+component v-bind:is="qTypes[currentQ.qType]" v-bind:qData="currentQ" v-on:user-answered="respondToAns"  />
 ```
