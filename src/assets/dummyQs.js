@@ -4,13 +4,13 @@ export const dummyQs = [
     q: 'What is `2/6 + 2/7` \nSimplify your answer',
     a: '`13/21`',
   },
+  { qType: 'shortAnswer', q: 'What is 2+1?', a: 3 },
   {
     qType: 'multiChoice', q: 'What do you call the longest chord in a circle?',
     a: 'diameter', wrongOptions: ['radius', 'tangent', 'line'],
     // feedback is optional
     feedback: 'The longest chord of a circle is called the diameter.' 
   },
-  { qType: 'shortAnswer', q: 'What is 2+1?', a: '`3`' },
   {
     qType: 'match', q: 'Match the following countries to their captials.',
     pairs: [['London', 'England'], ['Paris', 'France'], ['Brussels', 'Belgium'], ['Athens', 'Greece']]
