@@ -14,7 +14,9 @@ const checkAnswer = () => {
     waitForAns.value = false
     userWasCorrect.value = userAns.value === '' + props.qData.a.replace(/`/g, '')
     emits('user-answered', {
-        userWasCorrect: userWasCorrect.value
+        userWasCorrect: userWasCorrect.value,
+        userAns: userAns.value,
+        qAns: props.qData.a
     })
 }
 </script>

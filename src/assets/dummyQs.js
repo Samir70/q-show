@@ -1,5 +1,10 @@
 export const dummyQs = [
   {
+    qType: 'shortAnswer',
+    q: 'What is `2/6 + 2/7` \nSimplify your answer',
+    a: '`13/21`',
+  },
+  {
     qType: 'multiChoice', q: 'What do you call the longest chord in a circle?',
     a: 'diameter', wrongOptions: ['radius', 'tangent', 'line'],
     // feedback is optional

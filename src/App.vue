@@ -7,14 +7,14 @@ import SortQ from './components/SortQ.vue';
 import { dummyQs } from './assets/dummyQs';
 // import { computed } from '@vue/reactivity';
 import { ref } from '@vue/reactivity';
-const currentQ = ref(5);
+const currentQ = ref(0);
 const score = ref(0)
 const respondToAns = (ans) => {
   console.log('Need to respond to answer:', ans);
   score.value += ans.userWasCorrect ? 1 : 0
 }
 const nextQ = () => {
-  currentQ.value = (currentQ.value + 1) % 6
+  currentQ.value = (currentQ.value + 1) % 7
 }
 const qTypes = {
   classify: ClassifyQ,
