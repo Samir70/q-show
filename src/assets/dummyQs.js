@@ -5,7 +5,7 @@ export const dummyQs = [
     // feedback is optional
     feedback: 'The longest chord of a circle is called the diameter.' 
   },
-  { qType: 'shortAnswer', q: 'What is 2+1?', a: 3 },
+  { qType: 'shortAnswer', q: 'What is 2+1?', a: '`3`' },
   {
     qType: 'match', q: 'Match the following countries to their captials.',
     pairs: [['London', 'England'], ['Paris', 'France'], ['Brussels', 'Belgium'], ['Athens', 'Greece']]
