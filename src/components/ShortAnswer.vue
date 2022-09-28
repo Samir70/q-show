@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from '@vue/reactivity';
 import { ref } from 'vue';
+import * as diags from 'vue-diags';
 const props = defineProps({
     qData: Object
 })
@@ -23,13 +24,16 @@ const checkAnswer = () => {
 
 <template>
     <div id="q-space">
-        <p>{{ qText }}</p>
+        <p>{{  qText  }}</p>
+        <div v-if="qData.svg" class="vue-diag-box">
+            <component v-bind:is="diags[qData.svg.diag[0]][qData.svg.diag[1]]" v-bind:params="qData.svg.params" />
+        </div>
         <div v-if="waitForAns">
             <input type="text" v-model="userAns" />
             <button v-on:click="checkAnswer">Check Answer</button>
         </div>
         <div v-else>
-            <p>{{ userAns }} is {{ userWasCorrect ? 'Correct!' : 'Wrong!' }}</p>
+            <p>{{  userAns  }} is {{  userWasCorrect ? 'Correct!' : 'Wrong!'  }}</p>
         </div>
     </div>
 </template>
@@ -44,4 +48,10 @@ const checkAnswer = () => {
     width: 90vw;
     max-width: 480px;
 }
+/* .vue-diag-box {
+    display: flex;
+    flex-wrap: wrap;
+    width: 40vw;
+    justify-content: center;
+} */
 </style>

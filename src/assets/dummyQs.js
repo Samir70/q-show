@@ -1,6 +1,24 @@
 export const dummyQs = [
   {
     qType: 'shortAnswer',
+    q: 'What is the radius of this circle?',
+    a: '3',
+    svg: {
+      diag: ['circles', 'withDiameter'],
+      params: { d: 6, penColour: 'black', fillColour: 'white', angle: 13 }
+    }
+  },
+  {
+    qType: 'shortAnswer',
+    q: 'What is the diameter of this circle?',
+    a: '6',
+    svg: {
+      diag: ['circles', 'withRadius'],
+      params: { r: 3, penColour: 'black', fillColour: 'white', angle: -20 }
+    }
+  },
+  {
+    qType: 'shortAnswer',
     q: 'What is `2/6 + 2/7` \nSimplify your answer',
     a: '`13/21`',
   },
